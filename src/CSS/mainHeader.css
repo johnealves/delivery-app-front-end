@@ -1,0 +1,12 @@
+.main-header-container {
+  display: flex;
+  font-size: 2rem;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.main-header-container button {
+  border: none;
+  background-color: transparent;
+}
+

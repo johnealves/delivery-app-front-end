@@ -1,0 +1,26 @@
+ .card-product-container {
+   align-items: center;
+   border-radius: 5px;
+   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.205);
+   display: flex;
+   flex-direction: column;
+   height: 230px;
+   margin: 0.2rem;
+   width: 45%;
+ }
+
+ .card-product-container:hover {
+   transform: scale(1.03);
+   transition: 0.3s;
+ }
+
+ .card-product-container img {
+   height: 140px;
+   max-width: 100%;
+   text-align: center;
+ }
+
+ .card-product-container p {
+   width: 99%;
+   text-align: center;
+ }
