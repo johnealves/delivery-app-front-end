@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   token: localStorage.getItem('be6ab0c5114eebbcdeefb28cd016a5af'),
-  userData: []
+  userData: JSON.parse(localStorage.getItem('b094a4ae07f4eed526322d8ad948a935'))
 }
 
 // const getToken = localStorage.getItem('cookmasterToken');

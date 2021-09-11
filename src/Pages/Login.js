@@ -16,10 +16,9 @@ function Login({ newToken, newUser }) {
       email,
       password,
     })
-    .then((response) => {
-      console.log(response)
-      localStorage.setItem('be6ab0c5114eebbcdeefb28cd016a5af', response.data.token)
-      localStorage.setItem('userDeliveryApp', JSON.stringify(response.data))
+    .then(({ data: { token, ...userData } }) => {
+      localStorage.setItem('be6ab0c5114eebbcdeefb28cd016a5af', token)
+      localStorage.setItem('b094a4ae07f4eed526322d8ad948a935', JSON.stringify(userData))
     })
     .then(() => {
       history.push('/');
@@ -27,7 +26,7 @@ function Login({ newToken, newUser }) {
     })
     .catch((err) => { 
       console.log(err)
-      // alert('Dados incorretos! Verifique usuario e senha e tente novamente.')
+      alert('Dados incorretos! Verifique usuario e senha e tente novamente.')
     })
 
   }

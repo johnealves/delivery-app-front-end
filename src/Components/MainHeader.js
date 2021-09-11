@@ -12,6 +12,7 @@ const MainHeader = ({ tokenRedux }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('be6ab0c5114eebbcdeefb28cd016a5af');
+    localStorage.removeItem('b094a4ae07f4eed526322d8ad948a935');
     window.location.reload();
     history.push('/');
   }

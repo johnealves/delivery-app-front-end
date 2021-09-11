@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import CardOrderListCustomer from '../Components/CardOrderListCustomer';
 import api from '../services/axiosApi';
 import '../CSS/OrdersCustomer.css';
+import { connect } from 'react-redux';
+import md5 from 'md5';
 
-const OrdersCustomer = () => {
+const OrdersCustomer = ({ tokenRedux }) => {
   const [orders, setOrders] = useState([]);
-  const token = localStorage.getItem('be6ab0c5114eebbcdeefb28cd016a5af');
+  const token = tokenRedux;
 
   useEffect(() => {
     api.get('/orders', { headers: { authorization: token } })
@@ -23,4 +25,8 @@ const OrdersCustomer = () => {
   );
 };
 
-export default OrdersCustomer;
+const mapStateToProps = ({ userReducer }) => ({
+  tokenRedux: userReducer.token,
+})
+
+export default connect(mapStateToProps)(OrdersCustomer);
