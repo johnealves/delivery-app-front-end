@@ -1,12 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { BiHome, BiLogInCircle, BiLogOutCircle, BiUser } from 'react-icons/bi'
+import { FaRegUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import '../CSS/mainHeader.css';
+import { connect } from 'react-redux';
 
-const MainHeader = () => {
+const MainHeader = ({ tokenRedux }) => {
   const history = useHistory();
-  const token = localStorage.getItem("be6ab0c5114eebbcdeefb28cd016a5af");
+  const token = tokenRedux;
 
   const handleLogout = () => {
     localStorage.removeItem('be6ab0c5114eebbcdeefb28cd016a5af');
@@ -18,31 +20,36 @@ const MainHeader = () => {
     <header className="main-header-container">
       <Link exact to="/">
         <BiHome />
+        <p>Inicio</p>
       </Link>
       <section>
         {/* <BiUser />
         <BiLogInCircle /> */}
         {
           (!token) ? (
-            <>
+            <div>
               <Link to="/register">
-                <BiUser />&nbsp;
+                <FaRegUserCircle className="nav-icons"/>
+                <p>Cadastre-se</p>
               </Link>
               <Link to="/login">
-                <BiLogInCircle />&nbsp;
+                <BiLogInCircle className="nav-icons"/>
+                <p>Entrar</p>
               </Link>
-            </>
+            </div>
           ) : (
-            <>
-              <Link exact to="/orders">
-                <BiUser />&nbsp;
+            <div>
+              <Link exact to="/customer/orders">
+                <BiUser className="nav-icons"/>
+                <p>Pedidos</p>
               </Link>
               <Link to="">
                 <button type="button" onClick={ handleLogout }>
-                  <BiLogOutCircle />&nbsp;
+                  <BiLogOutCircle className="nav-icons"/>
+                  <p>Sair</p>
                 </button>
               </Link>
-            </>
+            </div>
           )
         }
       </section>
@@ -50,4 +57,8 @@ const MainHeader = () => {
   );
 }
 
-export default MainHeader;
+const mapStateReducer = ({ userReducer }) => ({
+  tokenRedux: userReducer.token,
+})
+
+export default connect(mapStateReducer)(MainHeader);

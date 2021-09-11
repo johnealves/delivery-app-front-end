@@ -1,12 +1,39 @@
 .main-header-container {
+  align-items: flex-start;
+  align-content: center;
   display: flex;
   font-size: 2rem;
   justify-content: space-between;
   padding: 10px;
+  width: 95vw;
 }
 
-.main-header-container button {
+.main-header-container div {
+  display: flex;
+}
+
+.main-header-container a button {
+  align-items: center;
   border: none;
   background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
 }
 
+.main-header-container a {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem;
+}
+
+.main-header-container p {
+  font-size: 0.7rem;
+}
+
+.nav-icons {
+  margin: 0;
+}

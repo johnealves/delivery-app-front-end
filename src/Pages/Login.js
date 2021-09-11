@@ -19,7 +19,7 @@ function Login({ newToken, newUser }) {
     .then((response) => {
       console.log(response)
       localStorage.setItem('be6ab0c5114eebbcdeefb28cd016a5af', response.data.token)
-      localStorage.setItem('userDeliveryApp', response.data)
+      localStorage.setItem('userDeliveryApp', JSON.stringify(response.data))
     })
     .then(() => {
       history.push('/');

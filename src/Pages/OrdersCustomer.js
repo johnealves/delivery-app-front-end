@@ -14,10 +14,11 @@ const OrdersCustomer = () => {
 
   return (
     <div className="order-list-container">
-      { orders
-        .map(
+      { (orders.length) 
+        ? orders.map(
           (order, index) => <CardOrderListCustomer order={ order } key={ index } />,
-        ) }
+        ) 
+        : <p>Ainda não ha pedidos realizados</p>}
     </div>
   );
 };

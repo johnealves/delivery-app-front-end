@@ -13,8 +13,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={ Home } />
         <Route path="/login" component={ Login } />
+        {/* <Route path="/register" component={ Login } /> */}
         <Route path="/customer/order/:id" component={ DetailsCustomer } />
-        <Route parh="/orders/" component={ OrdersCustomer } />
+        <Route parh="/customer/orders/" component={ OrdersCustomer } />
       </Switch>
     </div>
   );
