@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { BiHome, BiLogInCircle, BiLogOutCircle, BiUser } from 'react-icons/bi'
 import { FaRegUserCircle } from 'react-icons/fa';
+import { RiFileList3Line } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import '../CSS/mainHeader.css';
 import { connect } from 'react-redux';
@@ -41,7 +42,7 @@ const MainHeader = ({ tokenRedux }) => {
           ) : (
             <div>
               <Link exact to="/customer/orders">
-                <BiUser className="nav-icons"/>
+                <RiFileList3Line className="nav-icons"/>
                 <p>Pedidos</p>
               </Link>
               <Link to="">

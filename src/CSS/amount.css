@@ -1,0 +1,11 @@
+.amount-container {
+  background-color: #cc1c2d;
+  border-radius: 5px;
+  bottom: 5px;
+  color: white;
+  font-weight: 900;
+  padding: 5px 10px;
+  position: fixed;
+  right: 20px;
+  text-align: right;
+}

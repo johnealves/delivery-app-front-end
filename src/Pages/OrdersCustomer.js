@@ -3,7 +3,6 @@ import CardOrderListCustomer from '../Components/CardOrderListCustomer';
 import api from '../services/axiosApi';
 import '../CSS/OrdersCustomer.css';
 import { connect } from 'react-redux';
-import md5 from 'md5';
 
 const OrdersCustomer = ({ tokenRedux }) => {
   const [orders, setOrders] = useState([]);

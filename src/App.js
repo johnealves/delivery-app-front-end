@@ -4,6 +4,8 @@ import Login from './Pages/Login';
 import MainHeader from './Components/MainHeader';
 import OrdersCustomer from './Pages/OrdersCustomer';
 import DetailsCustomer from './Pages/DetailsCustomer';
+import Checkout from './Pages/Checkout';
+import NotFound from './Components/NotFound';
 import './App.css';
 
 function App() {
@@ -15,7 +17,9 @@ function App() {
         <Route path="/login" component={ Login } />
         {/* <Route path="/register" component={ Login } /> */}
         <Route path="/customer/order/:id" component={ DetailsCustomer } />
-        <Route parh="/customer/orders/" component={ OrdersCustomer } />
+        <Route path="/checkout" component={ Checkout } />
+        <Route parh="/customer/orders" component={ OrdersCustomer } />
+        <Route component={ NotFound } />
       </Switch>
     </div>
   );
