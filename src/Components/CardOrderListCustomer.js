@@ -39,18 +39,16 @@ const CardOrderListCustomer = ({ order }) => {
     // eslint-disable-next-line react/react-in-jsx-scope
     <Link to={ `/customer/order/${order.id}` }>
       <div className="card-order">
-        <p
-          data-testid={ `customer_orders__element-order-id-${order.id}` }
+        <div
           className="number-order"
         >
           Pedido
           <br />
           { order.id }
-        </p>
+        </div>
         <div className="card-order-info">
           <section>
             <div
-              data-testid={ `customer_orders__element-delivery-status-${order.id}` }
               className={ `status-container ${orderStatus}` }
             >
               { orderStatus.toUpperCase() }

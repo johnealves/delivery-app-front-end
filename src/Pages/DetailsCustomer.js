@@ -40,7 +40,7 @@ const DetailsCustomer = (props) => {
   });
 
   const dataTestButtonSend = 'customer_order_details__button-delivery-check';
-  const dTidStat = 'customer_order_details__element-order-details-label-delivery-status';
+  // const dTidStat = 'customer_order_details__element-order-details-label-delivery-status';
 
   if (orderStatus === '') return <NotFound />;
 
@@ -57,14 +57,14 @@ const DetailsCustomer = (props) => {
       <p
         data-testid="seller_order_details__element-order-details-label-order-date"
       >
-        { moment(order.sale_date).format('L')}
+        { moment(order.sale_date).format('DD/MM/yyyy')}
       </p>
-      <p
+      {/* <p
         data-testid={ dTidStat }
         className={ `status-details ${orderStatus}` }
       >
         {orderStatus.toUpperCase()}
-      </p>
+      </p> */}
     </div>
   );
 
@@ -84,7 +84,12 @@ const DetailsCustomer = (props) => {
   return (
     <div>
       <div className="details-order-seller-container">
-        <h3>Detralhe do Pedido</h3>
+        <h3>Detralhes do Pedido</h3>
+        <div className="status-details orders-steps" />
+        <div className={ `status-details ${orderStatus}` }/>
+        <p>
+          {`Status do pedido: ${orderStatus}` }
+        </p>
         <div className="details-order-container">
           <section>
             { renderInfoPedidos() }

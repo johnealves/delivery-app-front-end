@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { BiHome, BiLogInCircle, BiLogOutCircle, BiUser } from 'react-icons/bi'
+import { BiHome, BiLogInCircle, BiLogOutCircle } from 'react-icons/bi'
 import { FaRegUserCircle } from 'react-icons/fa';
 import { RiFileList3Line } from 'react-icons/ri';
 import { Link } from 'react-router-dom';

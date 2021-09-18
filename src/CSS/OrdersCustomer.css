@@ -5,3 +5,19 @@
   justify-content: center;
   width: 100%;
 }
+
+.card-order-info {
+  flex: 1;
+  justify-content: space-between;
+}
+
+.card-order-info section {
+  flex: 1;
+}
+
+.card-order-info .status-container {
+  justify-content: center;
+  font-weight: 700;
+  margin: 0 0.5rem;
+  width: 100%;
+}

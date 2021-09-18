@@ -9,7 +9,7 @@ const CardProduct = ({ product, itens, setPrice }) => {
 
   useEffect(()=> {
     (itens) && itens.forEach((item) => (item.id === product.id) && setItemQuantity(item.quantity))
-  }, [])
+  }, [itens, product.id])
 
   const increaseCart = () => {
     setItemQuantity(itemQuantity + 1)

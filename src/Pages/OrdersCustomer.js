@@ -5,6 +5,7 @@ import '../CSS/OrdersCustomer.css';
 import { connect } from 'react-redux';
 
 const OrdersCustomer = ({ tokenRedux }) => {
+  console.log("order custome")
   const [orders, setOrders] = useState([]);
   const token = tokenRedux;
 

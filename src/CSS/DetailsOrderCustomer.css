@@ -38,6 +38,7 @@
   line-height: 1;
   margin: 0.5rem;
   padding: 2px 10px;
+  width: 50%;
 }
 
 .details-order-seller-container button {
@@ -54,12 +55,23 @@
   background-color: #236b51;
 }
 
+.orders-steps {
+  background-color: rgb(223, 221, 221);
+  position: relative;
+  width: 95%;
+  top: 12px;
+  z-index: -1;
+}
+
 .pendente {
-  background-color: #d4c63c;
+  background-color: #ffbb00;
+  width: 25%;
+  z-index: 999;
 }
 
 .entregue {
   background-color: #4fd5b0;
+  width: 95%;
 }
 
 .details-order-container h3 {
@@ -89,7 +101,7 @@
   padding: 10px 10px 0;
 }
 
-.list-item-header span:nth-child( 5 ) {
+/* .list-item-header span:nth-child( 5 ) {
   width: 6rem;
 }
 
@@ -99,7 +111,7 @@
 
 .list-item-header span:nth-child( 3 ) {
   width: 6rem;
-}
+} */
 
 .list-item-header span:nth-child( 2 ) {
   flex-grow: 1;

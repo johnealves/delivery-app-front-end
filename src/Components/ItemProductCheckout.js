@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import api from '../services/axiosApi';
+import '../CSS/checkout.css';
 
-const ItemProductCheckout = ({ product }) => {
+const ItemProductCheckout = ({ item }) => {
+  const [product, setProduct] = useState()
+
+  useEffect(() => {
+    api.get(`/products/${item.id}`)
+    .then((resp) => setProduct(resp.data.product))
+    .catch((err) => console.log(err));
+  }, [item.id])
+
   return (
-    <li>
+    <li className="checkout-item-container">
       <p>
-        <span>{ product.quantity }</span>
+        <span>{ item.quantity }</span>
         &nbsp;
-        <span>{ product.id }</span>
+        <span>{ (product) && product.name }</span>
       </p>
       <p>
-        { `R$ ${product.quantity * product.price}` }
+        { `R$ ${item.quantity * item.price}` }
       </p>
-      <hr />
     </li>
   )
 }

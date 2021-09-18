@@ -21,3 +21,13 @@
   flex: 1;
   margin-left: 0.5rem;
 }
+
+.checkout-item-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.checkout-item-container p:nth-child(2) {
+  font-weight: 900;
+}

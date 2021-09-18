@@ -6,29 +6,27 @@ const ProductCardlist = ({ product, index }) => {
   console.log(index);
   return (
     <li className="li-detail-order">
-      <span
-        data-testid={ `seller_order_details__element-order-table-item-number-${index}` }
-      >
+      <div className={ 'index-details-order' }>
         { index }
-      </span>
-      <span data-testid={ `seller_order_details__element-order-table-name-${index}` }>
-        { product.name }
-      </span>
-      <span
-        data-testid={ `seller_order_details__element-order-table-quantity-${index}` }
-      >
-        { product.SalesProducts.quantity }
-      </span>
-      <span
-        data-testid={ `seller_order_details__element-order-table-unit-price-${index}` }
-      >
-        { `R$ ${product.price}` }
-      </span>
-      <span
-        data-testid={ `seller_order_details__element-order-table-sub-total-${index}` }
-      >
-        { `R$ ${parseFloat(product.SalesProducts.quantity * product.price).toFixed(2)}` }
-      </span>
+      </div>
+      <div>
+        <p>
+          <span>
+            { product.name }
+          </span>
+        </p>
+        <p>
+          <span>
+            { `${product.SalesProducts.quantity} x` }
+          </span>
+          <span>
+            { `R$ ${product.price}` }
+          </span>
+          <span>
+            { `R$ ${parseFloat(product.SalesProducts.quantity * product.price).toFixed(2)}` }
+          </span>
+        </p>
+      </div>
     </li>
   );
 };

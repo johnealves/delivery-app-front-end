@@ -15,7 +15,7 @@ const Home = ({ itens, setPrice }) => {
     .then((resp) => setProducts(resp.data.products))
     .catch((err) => console.log(err));
     (itens) && setPrice(calcTotalCart(itens));
-  }, [])
+  }, [itens, setPrice])
 
   return (
     <div className="home-container">
