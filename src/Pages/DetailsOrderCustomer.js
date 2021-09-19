@@ -51,10 +51,10 @@ const DetailsOrderCustomer = (props) => {
         PEDIDO:
         {order.id}
       </span>
-      <span>
+      {/* <span>
         P.Vend: &nbsp;
         { order.seller.name }
-      </span>
+      </span> */}
       <span
         data-testid="seller_order_details__element-order-details-label-order-date"
       >

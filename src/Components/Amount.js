@@ -8,7 +8,7 @@ const Amount = ({ totalCart }) => {
 
   return (
     <Link to="/checkout" className="amount-container">
-      <FiShoppingCart /> &nbsp;{ `Total R$ ${totalCart}` }
+      <FiShoppingCart /> &nbsp;{ `Total ${totalCart.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}` }
     </Link>
   )
 }

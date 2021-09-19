@@ -7,6 +7,7 @@ import DetailsCustomer from './Pages/DetailsCustomer';
 import Checkout from './Pages/Checkout';
 import NotFound from './Components/NotFound';
 import './App.css';
+import Register from './Pages/Register';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={ Home } />
         <Route path="/login" component={ Login } />
-        <Route path="/register" component={ NotFound } />
+        <Route path="/register" component={ Register } />
         {/* <Route path="/register" component={ Login } /> */}
         <Route path="/checkout" component={ Checkout } />
         <Route path="/customer/order/:id" component={ DetailsCustomer } />

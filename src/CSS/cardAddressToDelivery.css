@@ -1,0 +1,10 @@
+.delivery-address-container {
+  border: 1px solid rgb(97, 228, 22);
+  font-size: 0.9rem;
+  padding: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.delivery-address-container p {
+  margin: 0;
+}

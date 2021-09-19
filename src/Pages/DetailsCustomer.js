@@ -47,24 +47,18 @@ const DetailsCustomer = (props) => {
   const renderInfoPedidos = () => (
     <div className="render-info-pedidos">
       <p>
-        PEDIDO:
+        PEDIDO: &nbsp;
         {order.id}
       </p>
-      <p>
+      {/* <p>
         Vend: &nbsp;
         { order.seller.name }
-      </p>
+      </p> */}
       <p
         data-testid="seller_order_details__element-order-details-label-order-date"
       >
         { moment(order.sale_date).format('DD/MM/yyyy')}
       </p>
-      {/* <p
-        data-testid={ dTidStat }
-        className={ `status-details ${orderStatus}` }
-      >
-        {orderStatus.toUpperCase()}
-      </p> */}
     </div>
   );
 

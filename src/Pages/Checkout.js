@@ -6,25 +6,37 @@ import calcTotalCart from '../util/totalPurchase';
 import  '../CSS/checkout.css';
 import api from '../services/axiosApi';
 import { useHistory } from 'react-router';
+import getUserData from '../services/getUserData';
+import CardAddressToDelivery from '../Components/CardAddressToDelivery';
 
 const Checkout = ({ itens, totalCart, setPrice }) => {
   const [cart, setCart] = useState([])
+  const [user, setUser] = useState({})
+  const [selectedAddress, setSelectedAddress] = useState({})
   const history = useHistory()
 
   useEffect(() => { 
     const itensFormated = itens.filter((item) => item.quantity > 0)
     setCart(itensFormated);
     setPrice(calcTotalCart(itens));
+    loadUserData()
   }, [setPrice, setCart, itens])
-
-  const submitOrder = () => {
+  
+  const loadUserData = async () => {
     const token = localStorage.getItem("be6ab0c5114eebbcdeefb28cd016a5af")
+    const user = await getUserData(token);
+    setUser(user)
+    setSelectedAddress(user.address[0])
+  }
+  
+  const submitOrder = async () => {
     const products = JSON.parse(localStorage.getItem("b8398c04b1b936e0bde5361cd3cc3cb0"))
+    const token = localStorage.getItem("be6ab0c5114eebbcdeefb28cd016a5af");
     api.post("/sales", {
       name: "Fulana Pereira",
       totalPrice: totalCart,
-      deliveryNumber: "50",
-      deliveryAddress: "Estrada dos Alfaneiros",
+      deliveryNumber: selectedAddress.number,
+      deliveryAddress: selectedAddress.street,
       products
     },
     { headers: { authorization: token } })
@@ -56,6 +68,7 @@ const Checkout = ({ itens, totalCart, setPrice }) => {
 
   return (
     <div className="checkout-container">
+      <CardAddressToDelivery address={ selectedAddress } />
       <h3>Pedido</h3>
       <ul>
         <hr/>
@@ -72,7 +85,8 @@ const Checkout = ({ itens, totalCart, setPrice }) => {
         <div>
           <p>Total</p>
           <p>
-            { (totalCart) ? `R$ ${totalCart}` : "R$ 0.00" }
+            { (totalCart) ? totalCart.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+             : "R$ 0.00" }
           </p>
         </div>
         <button className="btn btn-danger" onClick={ submitOrder }>
