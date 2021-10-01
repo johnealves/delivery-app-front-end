@@ -136,3 +136,15 @@
 .render-button {
   text-align: center;
 }
+
+.buttons-seller-container {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-seller-container button {
+  font-size: 0.8rem;
+  padding: 5px;
+  margin: auto;
+}

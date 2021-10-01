@@ -28,7 +28,6 @@ function Login({ newToken, newUser }) {
       console.log(err)
       alert('Dados incorretos! Verifique usuario e senha e tente novamente.')
     })
-
   }
 
   return (

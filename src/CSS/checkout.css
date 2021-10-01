@@ -31,3 +31,22 @@
 .checkout-item-container p:nth-child(2) {
   font-weight: 900;
 }
+
+.form-address-to-delivery-container {
+  font-size: 0.7rem;
+  margin-bottom: 150px;
+}
+
+.form-address-to-delivery-container label{
+  width: 100%;
+}
+
+.form-address-to-delivery-container input{
+  font-size: 0.7rem;
+}
+
+.btn-outline-danger {
+  margin: 0.5rem;
+  margin-bottom: 50px;
+  width: 100%;
+}

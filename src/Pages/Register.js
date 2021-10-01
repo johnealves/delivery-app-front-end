@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 import api from '../services/axiosApi';
+import "../CSS/register.css";
 
 const Register = () => {
   const [registerData, setRegisterData] = useState({})
@@ -19,8 +20,22 @@ const Register = () => {
     console.log('click')
     api.post('/register', registerData)
       .then((response) => {
-        console.log(response);
-        history.push('/');
+        api.post(`/login`, {
+          email: registerData.email,
+          password: registerData.password,
+        })
+        .then(({ data: { token, ...userData } }) => {
+          localStorage.setItem('be6ab0c5114eebbcdeefb28cd016a5af', token)
+          localStorage.setItem('b094a4ae07f4eed526322d8ad948a935', JSON.stringify(userData))
+        })
+        .then(() => {
+          history.push('/');
+          window.location.reload();
+        })
+        .catch((err) => { 
+          console.log(err)
+          alert('Dados incorretos! Verifique usuario e senha e tente novamente.')
+        })
       })
       .catch((err) => {
         console.log('[Erro] >', err);
@@ -30,7 +45,7 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <h5>Novo usuario</h5>
+      <h4>Novo cadastro</h4>
       <form>
         <div className="mb-3">
           <label htmlFor="form-fullname" className="form-label">

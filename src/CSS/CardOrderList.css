@@ -35,13 +35,16 @@ a {
 
 .card-order div section {
   display: flex;
+  margin-left: 0;
 }
 
 .card-order-info {
   align-items: flex-end;
   display: flex;
+  flex-direction: column;
   font-size: 0.9rem;
   padding: 10px;
+  /* max-width: 80%; */
 }
 
 .render-date-price {
@@ -65,7 +68,7 @@ a {
   display: flex;
   padding: 5px;
   text-align: center;
-  width: 50%;
+  width: auto;
 }
 
 .pendente {

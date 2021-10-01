@@ -4,9 +4,11 @@ import io from '../socket';
 import api from '../services/axiosApi';
 import NotFound from '../Components/NotFound';
 import ProductCardlist from '../Components/ProductCardList';
-import '../CSS/DetailsOrderCustomer.css';
+import { connect } from 'react-redux';
+import getUserData from '../services/getUserData';
+import '../CSS/DetailsOrder.css';
 
-const DetailsCustomer = (props) => {
+const DetailsOrder = (props) => {
   const {
     match: {
       params: { id },
@@ -14,15 +16,16 @@ const DetailsCustomer = (props) => {
   } = props;
   const [order, setOrder] = useState({});
   const [orderStatus, setOrderStatus] = useState('');
+  const [role, setRole] = useState("customer")
+  // const [deliveryAddress] = useState()
 
-  const token = localStorage.getItem('be6ab0c5114eebbcdeefb28cd016a5af');
+  const token = props.tokenRedux;
   
   useEffect(() => {
-    console.log(id)
+    getUserData(token).then(resp => setRole(resp.role));
     api
       .get(`/order/${id}`, { headers: { authorization: token } })
       .then((result) => {
-        console.log(result)
         setOrder(result.data[0]);
         setOrderStatus(result.data[0].status);
       })
@@ -62,7 +65,16 @@ const DetailsCustomer = (props) => {
     </div>
   );
 
-  const renderButtosStatus = () => (
+  const renderAddressToDelivery = () => {
+    return (
+      <div>
+        <h6>Endereço para entrega:</h6>
+        <p>{ `${order.deliveryAddress}, nº${order.deliveryNumber}` } </p>
+      </div>
+    )
+  }
+
+  const renderButtonStatusClient = () => (
     <div className="render-button">
       <button
         data-testid={ dataTestButtonSend }
@@ -71,6 +83,25 @@ const DetailsCustomer = (props) => {
         onClick={ handleStatus }
       >
         MARCAR COMO ENTREGUE
+      </button>
+    </div>
+  );
+
+  const renderButtonStatusSeller = () => (
+    <div className="buttons-seller-container">
+      <button
+        name="Preparando"
+        type="submit"
+        onClick={ handleStatus }
+      >
+        PREPARAR PEDIDO
+      </button>
+      <button
+        name="Em Trânsito"
+        type="submit"
+        onClick={ handleStatus }
+      >
+        SAIU PARA ENTREGA
       </button>
     </div>
   );
@@ -99,10 +130,17 @@ const DetailsCustomer = (props) => {
             { `R$ ${order.totalPrice}` }
           </p>
         </div>
-        { renderButtosStatus() }
+        { (role === "seller") && renderAddressToDelivery()}
+        { (role === "customer")
+          ? renderButtonStatusClient()
+          : renderButtonStatusSeller() }
       </div>
     </div>
   );
 };
 
-export default DetailsCustomer;
+const mapStateToProps = ({ userReducer }) => ({
+  tokenRedux: userReducer.token,
+})
+
+export default connect(mapStateToProps)(DetailsOrder);

@@ -5,13 +5,7 @@ import { Link } from 'react-router-dom';
 import io from '../socket';
 import '../CSS/CardOrderList.css';
 
-// 48: 'seller_orders__element-order-id-',
-// 49: 'seller_orders__element-delivery-status-',
-// 50: 'seller_orders__element-order-date-',
-// 51: 'seller_orders__element-card-price-',
-// 52: 'seller_orders__element-card-address-',
-
-const CardOrderList = ({ order }) => {
+const CardOrderList = ({ order, role }) => {
   const [orderStatus, setOrderStatus] = useState(order.status);
 
   useEffect(() => {
@@ -22,11 +16,7 @@ const CardOrderList = ({ order }) => {
 
   const renderDateAndPrice = () => (
     <div className="render-date-price">
-      <p
-        data-testid={
-          `seller_orders__element-order-date-${order.id}`
-        }
-      >
+      <p>
         { moment(order.sale_date).format('L')}
       </p>
       <p data-testid={ `seller_orders__element-card-price-${order.id}` }>
@@ -37,7 +27,7 @@ const CardOrderList = ({ order }) => {
 
   return (
     // eslint-disable-next-line react/react-in-jsx-scope
-    <Link to={ `/seller/orders/${order.id}` }>
+    <Link to={ `order/${order.id}` }>
       <div className="card-order">
         <p
           data-testid={ `seller_orders__element-order-id-${order.id}` }
@@ -49,31 +39,20 @@ const CardOrderList = ({ order }) => {
         </p>
         <div className="card-order-info">
           <section>
-            <div
-              data-testid={ `seller_orders__element-delivery-status-${order.id}` }
-              className={ `status-container ${orderStatus}` }
-            >
+            <div className={ `status-container ${orderStatus}` }>
               { orderStatus.toUpperCase() }
             </div>
             { renderDateAndPrice() }
           </section>
-          <section className="card-order-address">
-            <span
-              data-testid={
-                `seller_orders__element-card-address-${order.id}`
-              }
-            >
+          {(role === "seller") && <section className="card-order-address">
+            <span>
               { order.deliveryAddress }
             </span>
             <span>,&nbsp; </span>
-            <span
-              data-testid={
-                `seller_orders__element-card-address-${order.id}`
-              }
-            >
+            <span>
               { order.deliveryNumber }
             </span>
-          </section>
+          </section>}
         </div>
       </div>
     </Link>

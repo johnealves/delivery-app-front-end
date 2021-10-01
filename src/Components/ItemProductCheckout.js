@@ -15,6 +15,7 @@ const ItemProductCheckout = ({ item }) => {
     <li className="checkout-item-container">
       <p>
         <span>{ item.quantity }</span>
+        <span> x</span>
         &nbsp;
         <span>{ (product) && product.name }</span>
       </p>
